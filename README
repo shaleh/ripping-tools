@@ -1,0 +1,14 @@
+Really simple wrapper scripts for common ripping tools.
+
+The audio setup rips albums using Artist/Album/artist_title.flac format.
+
+The video setup is a couple of wrappers around HandbrakeCLI.
+
+Tools used:
+abcde
+flac
+HandBrakeCLI
+
+deb http://www.deb-multimedia.org jessie main non-free
+
+Is the apt mirror that makes this easier.
