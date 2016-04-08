@@ -1,0 +1,5 @@
+# Rip $title, chapters initial - last including audio track 2, then 1 and the second subtitle
+# optimize (-O), preset Normal, passthrough audio
+# This will be called in a loop by rip_within_track.sh
+# Any variables from the script may be used here
+HandBrakeCLI -i ${device} -t ${title} -c ${initial}-${last} -a 2,1 -s 2 -O --preset Normal -E copy -o video/anime_series/Example_Show/s01_e${index}.m4v
