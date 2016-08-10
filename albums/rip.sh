@@ -1,7 +1,7 @@
 #!/bin/bash
 
 begin=`date +"%s"`
-abcde -c ../abcde.conf
+abcde -c ./abcde.conf
 end=`date +"%s"`
 
 duration=$((end - begin))
