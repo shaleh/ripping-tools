@@ -20,7 +20,7 @@ do
         last=$((initial + $length - 1))
 	echo "Starting $i"
 	echo "$initial to $last"
-	index=$i
+	episode=$(printf "%02d" $i)
 	. $cmdfile
 	initial=$((last + 1))
 done
