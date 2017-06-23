@@ -1,6 +1,32 @@
 #!/bin/bash
 
-BASE=${BASE:-/srv/multimedia/video/}
+source rip.cfg
+
+OPTIND=1
+while getopts "a:t:" opt
+do
+      case "$opt" in
+          a|audio)
+              AUDIO="-a $OPTARG"
+              ;;
+          t|track)
+              TRACK="-t $OPTARG"
+              ;;
+          \?)  # getopts is done with what it understands
+              break
+              ;;
+          -*)
+              echo "Usage: $0 [-a|--audio a,b,c...] [-t|--track N] outdir track name"
+              exit 0
+              ;;
+          *)
+              echo "Unknown value: $opt"
+              exit 1
+              ;;
+      esac
+done
+
+shift $((OPTIND - 1))  # Move past hyphen arguments, what is left is the path and the name
 
 dir=$1
 shift
@@ -17,7 +43,7 @@ fi
 echo $output
 
 begin=`date +"%s"`
-HandBrakeCLI -i /dev/dvd --main-feature -O --preset Normal -E copy -o "$output"
+$RIP_TOOL -i /dev/dvd -O --preset Normal -E copy $TRACK $AUDIO -o "$output"
 end=`date +"%s"`
 
 duration=$((end - begin))
