@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE=/srv/multimedia/video/
+BASE=${BASE:-/srv/multimedia/video/}
 
 dir=$1
 shift
